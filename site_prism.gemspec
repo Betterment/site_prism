@@ -18,5 +18,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'addressable', '~> 2.3.3'
   
   s.add_development_dependency 'rspec', '< 4.0'
+  s.add_development_dependency 'rspec-collection_matchers'
 end
 
