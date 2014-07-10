@@ -59,7 +59,7 @@ end
 
 Then /^I cannot see the missing other thingy$/ do
   using_wait_time(0) do
-    expect(@test_site.home).to_not have_other_thingy
+    expect(@test_site.home).not_to have_other_thingy
   end
 end
 
@@ -72,7 +72,7 @@ Then /^I can get the group of links$/ do
 end
 
 Then /^all expected elements are present$/ do
-  expect(@test_site.home).to_not be_all_there
+  expect(@test_site.home).not_to be_all_there
 end
 
 Then /^an exception is raised when I try to deal with an element with no selector$/ do
@@ -108,7 +108,7 @@ When /^I wait while for an element to become invisible$/ do
 end
 
 Then /^the previously visible element is invisible$/ do
-  expect(@test_site.home.retiring_element).to_not be_visible
+  expect(@test_site.home.retiring_element).not_to be_visible
 end
 
 When /^I wait for a specific amount of time until a particular element is invisible$/ do
