@@ -18,10 +18,12 @@ module SitePrism
       end
     end
 
-    def displayed?(seconds = Waiter.default_wait_time)
+    def displayed?(*args)
+      expected_mappings = args.last.is_a?(::Hash) ? args.pop : {}
+      seconds = args.length > 0 ? args.first : Waiter.default_wait_time
       raise SitePrism::NoUrlMatcherForPage if url_matcher.nil?
       begin
-        Waiter.wait_until_true(seconds) { url_matches? }
+        Waiter.wait_until_true(seconds) { url_matches?(expected_mappings) }
       rescue SitePrism::TimeoutException => e
         return false
       end
@@ -74,11 +76,11 @@ module SitePrism
       has_no_selector? *find_args
     end
 
-    def url_matches?
+    def url_matches?(expected_mappings = {})
       if url_matcher.kind_of?(Regexp)
         !(page.current_url =~ url_matcher).nil?
       elsif url_matcher.respond_to?(:to_str)
-        matcher_template.matches?(page.current_url)
+        matcher_template.matches?(page.current_url, expected_mappings)
       else
         raise SitePrism::InvalidUrlMatcher
       end
