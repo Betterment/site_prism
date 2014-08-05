@@ -11,6 +11,6 @@ Then /^I can see the expected url$/ do
 end
 
 Then /^I can see that the page is not secure$/ do
-  expect(@test_site.home).to_not be_secure
+  expect(@test_site.home).not_to be_secure
 end
 

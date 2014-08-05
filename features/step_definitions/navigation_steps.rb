@@ -26,7 +26,7 @@ Then /^I am on the redirect page$/ do
 end
 
 Then /^I am not on the redirect page$/ do
-  expect(@test_site.redirect_page).to_not be_displayed
+  expect(@test_site.redirect_page).not_to be_displayed
 end
 
 Then /^I will be redirected to the home page$/ do

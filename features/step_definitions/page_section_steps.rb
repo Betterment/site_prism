@@ -96,4 +96,3 @@ end
 Then /^the page contains a section with no element$/ do
   expect(@test_site.home.people).to have_no_dinosaur
 end
-

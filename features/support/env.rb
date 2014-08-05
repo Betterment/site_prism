@@ -7,6 +7,7 @@ require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'
 require 'selenium-webdriver'
+require 'rspec/collection_matchers'
 
 $: << './test_site'
 $: << './lib'
