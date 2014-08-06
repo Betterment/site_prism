@@ -29,6 +29,19 @@ module SitePrism
       end
     end
 
+    def url_matches(seconds = Waiter.default_wait_time)
+      if displayed?(seconds)
+        if url_matcher.kind_of?(Regexp)
+          url_matcher.match(page.current_url)
+        elsif url_matcher.respond_to?(:to_str)
+          matcher_template.mappings(page.current_url)
+        else
+          raise SitePrism::InvalidUrlMatcher
+        end
+      end
+    end
+
+
     def self.set_url page_url
       @url = page_url.to_s
     end

@@ -40,8 +40,7 @@ module SitePrism
         if expected_mappings.empty?
           true
         else
-          expected_mappings.all? do |kv|
-            key, expected_value = kv
+          expected_mappings.all? do |key, expected_value|
             expected_value = expected_value.to_s if expected_value.kind_of?(Numeric)
             expected_value === url_mappings[key.to_s]
           end
